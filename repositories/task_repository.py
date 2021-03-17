@@ -1,5 +1,7 @@
 from db.run_sql import run_sql
 from models.task import Task
+from models.user import User
+import repositories.user_repository as user_repository
 
 # SAVE function
 def save(task):
@@ -20,7 +22,7 @@ def select_all():
     results = run_sql(sql)
     for row in results:
         user = user_repository.select(row['user_id'])
-        task = Task(row["description"],user,row["assignee"],row["duration"],row["completed"],row["id"])
+        task = Task(row["description"],user,row["duration"],row["completed"],row["id"])
         tasks.append(task)
     return tasks
 
@@ -32,7 +34,7 @@ def select(id):
     result = run_sql(sql,values)[0]
     if result is not None:
         user = user_repository.select(result['user_id'])
-        task = Task(result["description"], user, result["assignee"],result["duration"],result["completed"],result["id"])
+        task = Task(result["description"],user,result["duration"],result["completed"],result["id"])
     return task
 
 # DELETE all

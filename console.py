@@ -24,7 +24,7 @@ task_repository.save(task)
 task = Task("Walk Cat", user2, 60)
 task_repository.save(task)
 
-print(user_repository.tasks(user1))
-print(user_repository.tasks(user2))
+# print(user_repository.tasks(user1))
+# print(user_repository.tasks(user2))
 
 pdb.set_trace()
